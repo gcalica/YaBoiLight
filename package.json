@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "7.0.0",
+    "ajv": "^6.0.0",
     "chalk": "^2.4.1",
     "compression": "1.7.3",
     "connected-react-router": "4.5.0",
@@ -88,7 +89,8 @@
     "reselect": "4.0.0",
     "sanitize.css": "4.1.0",
     "styled-components": "4.0.2",
-    "warning": "4.0.2"
+    "warning": "4.0.2",
+    "yeelight-awesome": "^1.0.12"
   },
   "devDependencies": {
     "@babel/cli": "7.1.2",
@@ -134,7 +136,7 @@
     "html-webpack-plugin": "3.2.0",
     "image-webpack-loader": "^4.6.0",
     "imports-loader": "0.8.0",
-    "jest-cli": "23.6.0",
+    "jest-cli": "^24.5.0",
     "jest-styled-components": "6.2.2",
     "lint-staged": "7.3.0",
     "ngrok": "3.1.0",
