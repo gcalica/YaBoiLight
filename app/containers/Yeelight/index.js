@@ -2,7 +2,9 @@
 import { Buffer } from 'buffer';
 import Bulb from '../Bulb';
 // const net = require('net');
+import port from '../../../server/port';
 
+const WebSocket = require('isomorphic-ws');
 // function b64Encode(str) {
 //   return Buffer.from(str).toString('base64');
 // }
@@ -37,10 +39,16 @@ export default class Yeelight {
 
     const socketProtocol =
       window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const echoSocketUrl = `${socketProtocol}//${
-      window.location.hostname
-    }:3000/`;
-
+    const socketPort = window.location.port !== '' ? port : '';
+    let echoSocketUrl;
+    if (socketPort !== '') {
+      echoSocketUrl = `${socketProtocol}//${
+        window.location.hostname
+      }:${socketPort}/`;
+    } else {
+      echoSocketUrl = `${socketProtocol}//${window.location.hostname}`;
+    }
+    console.log(echoSocketUrl);
     const client = new WebSocket(echoSocketUrl);
     const pingTimeout = setTimeout(() => {
       client.close();
@@ -49,7 +57,7 @@ export default class Yeelight {
 
     client.onopen = () => {
       console.log('Websocket Client Connection Opened');
-      client.send(message);
+      client.send(message, Object.create({}), null);
     };
 
     client.onmessage = msg => {
@@ -107,13 +115,19 @@ export default class Yeelight {
     // Callback returns success:boolean
     const socketProtocol =
       window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const echoSocketUrl = `${socketProtocol}//${
-      window.location.hostname
-    }:3000/`;
+    const socketPort = window.location.port !== '' ? port : '';
+    let echoSocketUrl;
+    if (socketPort !== '') {
+      echoSocketUrl = `${socketProtocol}//${
+        window.location.hostname
+      }:${socketPort}/`;
+    } else {
+      echoSocketUrl = `${socketProtocol}//${window.location.hostname}`;
+    }
 
     const client = new WebSocket(echoSocketUrl);
-    client.send(`${JSON.stringify(command)}\r\n`);
-
+    client.send(`${JSON.stringify(command)}\r\n`, Object.create({}), null);
+    callback(false);
     // const client = net.createConnection(port, ip, () => {
     //   client.write(`${JSON.stringify(command)}\r\n`);
     // });
