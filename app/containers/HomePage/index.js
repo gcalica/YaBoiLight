@@ -24,11 +24,11 @@ export default class HomePage extends React.Component {
     };
 
     this.yeelight = new Yeelight();
-    // this.handleClick = this.handleClick.bind(this);
-    // this.toggleBulb = this.toggleBulb.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.toggleBulb = this.toggleBulb.bind(this);
   }
 
-  // toggleBulb = () => this.yeelight.togglePower();
+  toggleBulb = () => this.yeelight.togglePower();
 
   handleClick = () => this.discoverBulbs();
 

@@ -66,7 +66,7 @@ module.exports = {
     },
   ],
   actions: data => {
-    // Generate index.js and index.test.js
+    // Generate api.js and index.test.js
     var componentTemplate; // eslint-disable-line no-var
 
     switch (data.type) {
@@ -82,7 +82,7 @@ module.exports = {
     const actions = [
       {
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/index.js',
+        path: '../../app/containers/{{properCase name}}/api.js',
         templateFile: componentTemplate,
         abortOnFail: true,
       },

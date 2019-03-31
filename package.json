@@ -65,9 +65,7 @@
     "compression": "1.7.3",
     "connected-react-router": "4.5.0",
     "cross-env": "5.2.0",
-    "dgram": "^1.0.1",
     "express": "4.16.4",
-    "express-ws": "^4.0.0",
     "fontfaceobserver": "2.0.13",
     "history": "4.7.2",
     "hoist-non-react-statics": "3.0.1",
@@ -75,10 +73,10 @@
     "intl": "1.2.5",
     "invariant": "2.2.4",
     "ip": "1.1.5",
-    "isomorphic-ws": "^4.0.1",
     "loadable-components": "2.2.3",
     "lodash": "4.17.11",
     "minimist": "1.2.0",
+    "mongoose": "^5.4.20",
     "net": "^1.0.2",
     "prop-types": "15.6.2",
     "react": "16.6.0",
@@ -95,8 +93,7 @@
     "sanitize.css": "4.1.0",
     "semantic-ui-react": "^0.86.0",
     "styled-components": "4.0.2",
-    "warning": "4.0.2",
-    "ws": "^6.2.1"
+    "warning": "4.0.2"
   },
   "devDependencies": {
     "@babel/cli": "7.1.2",
@@ -170,6 +167,7 @@
     "webpack-dev-middleware": "3.4.0",
     "webpack-hot-middleware": "2.24.3 ",
     "webpack-pwa-manifest": "3.7.1",
-    "whatwg-fetch": "3.0.0"
+    "whatwg-fetch": "3.0.0",
+    "ws": "3.3.2"
   }
 }
