@@ -1,16 +1,16 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.7.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "YaBoiLight",
+  "version": "0.1.0",
+  "description": "A web application that connects Yeelight devices.",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git://github.com/gcalica/YaBoiLight.git"
   },
   "engines": {
     "npm": ">=5",
     "node": ">=8.10.0"
   },
-  "author": "Max Stoiber",
+  "author": "Gian Calica",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
@@ -76,6 +76,8 @@
     "loadable-components": "2.2.3",
     "lodash": "4.17.11",
     "minimist": "1.2.0",
+    "mongoose": "^5.4.20",
+    "net": "^1.0.2",
     "prop-types": "15.6.2",
     "react": "16.6.0",
     "react-dom": "16.6.0",
@@ -83,14 +85,15 @@
     "react-intl": "2.7.2",
     "react-redux": "5.0.7",
     "react-router-dom": "4.3.1",
+    "react-websocket": "^2.0.1",
     "redux": "4.0.1",
     "redux-immutable": "4.0.0",
     "redux-saga": "0.16.2",
     "reselect": "4.0.0",
     "sanitize.css": "4.1.0",
+    "semantic-ui-react": "^0.86.0",
     "styled-components": "4.0.2",
-    "warning": "4.0.2",
-    "yeelight-awesome": "^1.0.12"
+    "warning": "4.0.2"
   },
   "devDependencies": {
     "@babel/cli": "7.1.2",
@@ -103,6 +106,7 @@
     "@babel/preset-env": "7.1.0",
     "@babel/preset-react": "7.0.0",
     "@babel/register": "7.0.0",
+    "@types/node": "^11.12.0",
     "add-asset-html-webpack-plugin": "3.1.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
@@ -163,6 +167,7 @@
     "webpack-dev-middleware": "3.4.0",
     "webpack-hot-middleware": "2.24.3 ",
     "webpack-pwa-manifest": "3.7.1",
-    "whatwg-fetch": "3.0.0"
+    "whatwg-fetch": "3.0.0",
+    "ws": "3.3.2"
   }
 }
