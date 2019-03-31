@@ -4,8 +4,8 @@ export default class Bulb {
   constructor(info) {
     // Set object variables
     this.msgId = 1;
-    for (const key in info) {
-      this[key] = info[key];
+    for (let i = 0; i < info.length; i++) {
+      this[i] = info[i];
     }
 
     this.yeelight = new Yeelight();

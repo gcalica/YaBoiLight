@@ -10,26 +10,30 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import { Button } from 'semantic-ui-react';
-import messages from './messages';
-import Yeelight from '../Yeelight';
+import Yeelight from '../Yeelight/index';
 
 /* eslint-disable react/prefer-stateless-function */
-export default class HomePage extends React.PureComponent {
+export default class HomePage extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       refreshing: false,
       bulbs: [],
     };
-    this.handleClick = this.handleClick.bind(this);
+
     this.yeelight = new Yeelight();
+    // this.handleClick = this.handleClick.bind(this);
+    // this.toggleBulb = this.toggleBulb.bind(this);
   }
 
-  handleClick = () => this.connect();
+  // toggleBulb = () => this.yeelight.togglePower();
 
-  connect() {
+  handleClick = () => this.discoverBulbs();
+
+  discoverBulbs() {
+    console.log('Clicked');
     let newState = this.state;
     newState.refreshing = true;
     newState.bulbs = [];
@@ -45,6 +49,7 @@ export default class HomePage extends React.PureComponent {
         newState = this.state;
         newState.refreshing = false;
         this.setState(newState);
+
         console.log('Unable to find any bulbs in local network');
       }
     });
@@ -52,10 +57,10 @@ export default class HomePage extends React.PureComponent {
 
   render() {
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
+      <div>
         <Button basic content="Connect" onClick={this.handleClick} />
-      </h1>
+        {/* <Button content="Toggle" onClick={this.toggleBulb()} /> */}
+      </div>
     );
   }
 }

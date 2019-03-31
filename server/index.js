@@ -1,11 +1,10 @@
 /* eslint consistent-return:0 import/order:0 */
-// const WebSocket = require('ws');
-// const enableWs = require('express-ws');
+const WebSocket = require('ws');
 const express = require('express');
 const logger = require('./logger');
-// const http = require('http');
 const argv = require('./argv');
 const port = require('./port');
+const http = require('http');
 const setup = require('./middlewares/frontendMiddleware');
 const isDev = process.env.NODE_ENV !== 'production';
 const ngrok =
@@ -15,8 +14,6 @@ const ngrok =
 const { resolve } = require('path');
 const app = express();
 
-// enableWs(app);
-// module.exports = app;
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 
@@ -39,7 +36,25 @@ app.get('*.js', (req, res, next) => {
 });
 
 // Start your app.
-app.listen(port, host, async err => {
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+
+/* eslint-disable no-param-reassign */
+
+wss.on('connection', ws => {
+  console.log('Connected to WebSocket');
+  ws.isAlive = true;
+
+  ws.on('message', message => {
+    // log the received message and send it back to the client
+    console.log('Received message: %s\n', message);
+  });
+  ws.on('close', () => {
+    console.log('Websocket Server Connection Closed');
+  });
+});
+
+server.listen(port, host, async err => {
   if (err) {
     return logger.error(err.message);
   }
