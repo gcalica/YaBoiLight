@@ -11,6 +11,7 @@
 
 import React from 'react';
 import { Button } from 'semantic-ui-react';
+import Bulbs from '../../../server/index';
 import Yeelight from '../Yeelight/index';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -22,13 +23,19 @@ export default class HomePage extends React.Component {
       refreshing: false,
       bulbs: [],
     };
-
-    this.yeelight = new Yeelight();
+    for (let i = 0; i < Bulbs.length; i++) {
+      this.state.bulbs.push(Bulbs[i]);
+    }
+    this.yeelight = Yeelight.getInstance();
     this.handleClick = this.handleClick.bind(this);
     this.toggleBulb = this.toggleBulb.bind(this);
   }
 
-  toggleBulb = () => this.yeelight.togglePower();
+  toggleBulbPower() {
+    for (let bulb = 0; bulb < this.state.bulbs.length; bulb++) {
+      this.state.bulbs[bulb].togglePower();
+    }
+  }
 
   handleClick = () => this.discoverBulbs();
 
@@ -58,8 +65,8 @@ export default class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <Button basic content="Connect" onClick={this.handleClick} />
-        {/* <Button content="Toggle" onClick={this.toggleBulb()} /> */}
+        {/* <Button basic content="Connect" onClick={this.handleClick} /> */}
+        <Button content="Toggle" onClick={this.toggleBulbPower()} />
       </div>
     );
   }

@@ -1,4 +1,4 @@
-// // import Yeelight from '../Yeelight';
+// const Yeelight = require('../Yeelight/index');
 //
 // export default class Bulb {
 //   constructor(info) {
@@ -8,7 +8,7 @@
 //       this[i] = info[i];
 //     }
 //
-//     // this.yeelight = new Yeelight();
+//     this.yeelight = new Yeelight();
 //   }
 //
 //   togglePower(callback) {

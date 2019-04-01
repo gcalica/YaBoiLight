@@ -12,6 +12,13 @@ const webpack = require('webpack');
 process.noDeprecation = true;
 
 module.exports = options => ({
+  node: {
+    fs: 'empty',
+    child_process: 'empty',
+    tls: 'empty',
+    dgram: 'empty',
+    module: 'empty',
+  },
   mode: options.mode,
   entry: options.entry,
   output: Object.assign(
@@ -125,7 +132,7 @@ module.exports = options => ({
   ]),
   resolve: {
     modules: ['node_modules', 'app'],
-    extensions: ['.js', '.jsx', '.react.js'],
+    extensions: ['.js', '.jsx', '.react.js', '.json'],
     mainFields: ['browser', 'jsnext:main', 'main'],
   },
   devtool: options.devtool,
